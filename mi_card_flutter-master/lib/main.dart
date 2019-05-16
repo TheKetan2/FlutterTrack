@@ -18,6 +18,13 @@ class MyApp extends StatelessWidget {
                 radius: 50.0,
                 backgroundImage: AssetImage('img/namo.jpg'),
               ),
+              SizedBox(
+                height: 20.0,
+                width: 150.0,
+                child: Divider(
+                  color: Colors.teal[100]
+                ),
+              ),
               Text(
                 'Ketan D. Ramteke',
                 style: TextStyle(
@@ -54,12 +61,7 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20.0,
-                child: Divider(
-                  color: Colors.teal[100]
-                ),
-              ),
+              
               Card(
                 color: Colors.white,
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25.0),
