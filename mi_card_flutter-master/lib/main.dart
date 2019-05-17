@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               Card(
+                elevation: 20.0,
                 color: Colors.white,
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25.0),
                 child: Padding(
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
               
               Card(
                 color: Colors.white,
+                elevation: 20.0,
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25.0),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
