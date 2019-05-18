@@ -14,6 +14,7 @@ class XylophoneApp extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
