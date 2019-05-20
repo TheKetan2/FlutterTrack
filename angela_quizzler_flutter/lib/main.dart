@@ -25,16 +25,20 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Widget> scoreKeeper = [
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
+  List<Widget> scoreKeeper = [];
+  List<String> questions = [
+    'First question',
+    'Second question',
+    'Third question'
   ];
+
+  List<bool> ans = [
+    true,
+    false,
+    true,
+  ];
+
+  int qNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go',
+                questions[qNumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -72,10 +76,22 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  scoreKeeper.add(Icon(
-                    Icons.check,
-                    color: Colors.green,
-                  ));
+                  qNumber++;
+                  if (qNumber >= questions.length) {
+                    qNumber = 0;
+                    if (ans[qNumber]) {
+                      scoreKeeper.add(Icon(
+                        Icons.check,
+                        color: Colors.green,
+                      ));
+                    }
+                    else{
+                      scoreKeeper.add(Icon(
+                        Icons.close,
+                        color: Colors.red,
+                      ));
+                    }
+                  }
                 });
               },
             ),
@@ -87,19 +103,30 @@ class _QuizPageState extends State<QuizPage> {
             child: FlatButton(
               color: Colors.red,
               child: Text(
-                'Flase',
+                'False',
                 style: TextStyle(
                   fontSize: 20.0,
                   color: Colors.white,
                 ),
               ),
               onPressed: () {
-
                 setState(() {
-                  scoreKeeper.add(
-                    Icon(Icons.close,
-                    color: Colors.red,)
-                  );
+                  qNumber++;
+                  if (qNumber >= questions.length) {
+                    qNumber = 0;
+                  }
+                  if (!ans[qNumber]) {
+                      scoreKeeper.add(Icon(
+                        Icons.check,
+                        color: Colors.green,
+                      ));
+                    }
+                    else{
+                      scoreKeeper.add(Icon(
+                        Icons.close,
+                        color: Colors.red,
+                      ));
+                    }
                 });
               },
             ),
