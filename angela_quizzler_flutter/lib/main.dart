@@ -76,10 +76,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  qNumber++;
-                  if (qNumber >= questions.length) {
-                    qNumber = 0;
-                    if (ans[qNumber]) {
+                  if (ans[qNumber]) {
                       scoreKeeper.add(Icon(
                         Icons.check,
                         color: Colors.green,
@@ -91,6 +88,11 @@ class _QuizPageState extends State<QuizPage> {
                         color: Colors.red,
                       ));
                     }
+                    
+                  qNumber++;
+                  if (qNumber >= questions.length) {
+                    qNumber = 0;
+                    
                   }
                 });
               },
@@ -111,10 +113,6 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  qNumber++;
-                  if (qNumber >= questions.length) {
-                    qNumber = 0;
-                  }
                   if (!ans[qNumber]) {
                       scoreKeeper.add(Icon(
                         Icons.check,
@@ -127,6 +125,11 @@ class _QuizPageState extends State<QuizPage> {
                         color: Colors.red,
                       ));
                     }
+                  qNumber++;
+                  if (qNumber >= questions.length) {
+                    qNumber = 0;
+                  }
+                  
                 });
               },
             ),
