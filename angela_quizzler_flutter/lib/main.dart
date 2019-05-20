@@ -27,9 +27,9 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
   List<String> questions = [
-    'First question',
-    'Second question',
-    'Third question'
+    'Superman is Kryptonian.',
+    'Batman is Tony Stark',
+    'Bary Allen is the Flash.'
   ];
 
   List<bool> ans = [
@@ -88,7 +88,7 @@ class _QuizPageState extends State<QuizPage> {
                         color: Colors.red,
                       ));
                     }
-                    
+
                   qNumber++;
                   if (qNumber >= questions.length) {
                     qNumber = 0;
