@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'question.dart';
+import 'question_brain.dart';
 
 void main() => runApp(Quizzler());
 
@@ -26,24 +26,10 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  
   List<Widget> scoreKeeper = [];
-  /*List<String> questions = [
-    'Superman is Kryptonian.',
-    'Batman is Tony Stark',
-    'Bary Allen is the Flash.'
-  ];
 
-  List<bool> ans = [
-    true,
-    false,
-    true,
-  ];
-*/
-  List<Question> questionBank = [
-    Question('Superman is Kryptonian.', true),
-    Question('Batman is Tony Stark', false),
-    Question('Bary Allen is the Flash.', true),
-  ];
+  QuizBrain qb = QuizBrain();
   int qNumber = 0;
 
   @override
@@ -58,7 +44,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questionBank[qNumber].questionText,
+                qb.questionBank[qNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -82,7 +68,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  if (questionBank[qNumber].questionAnswer == true) {
+                  if (qb.questionBank[qNumber].questionAnswer == true) {
                     scoreKeeper.add(Icon(
                       Icons.check,
                       color: Colors.green,
@@ -95,7 +81,7 @@ class _QuizPageState extends State<QuizPage> {
                   }
 
                   qNumber++;
-                  if (qNumber >= questionBank.length) {
+                  if (qNumber >= qb.questionBank.length) {
                     qNumber = 0;
                   }
                 });
@@ -117,7 +103,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  if (!questionBank[qNumber].questionAnswer) {
+                  if (!qb.questionBank[qNumber].questionAnswer) {
                     scoreKeeper.add(Icon(
                       Icons.check,
                       color: Colors.green,
@@ -129,7 +115,7 @@ class _QuizPageState extends State<QuizPage> {
                     ));
                   }
                   qNumber++;
-                  if (qNumber >= questionBank.length) {
+                  if (qNumber >= qb.questionBank.length) {
                     qNumber = 0;
                   }
                 });
