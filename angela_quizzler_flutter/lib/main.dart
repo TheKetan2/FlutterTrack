@@ -44,7 +44,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                qb.questionBank[qNumber].questionText,
+                qb.getQuestionText(qNumber),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -68,7 +68,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  if (qb.questionBank[qNumber].questionAnswer == true) {
+                  if (qb.getQuestionAns(qNumber) == true) {
                     scoreKeeper.add(Icon(
                       Icons.check,
                       color: Colors.green,
@@ -81,7 +81,7 @@ class _QuizPageState extends State<QuizPage> {
                   }
 
                   qNumber++;
-                  if (qNumber >= qb.questionBank.length) {
+                  if (qNumber >= qb.totalQue()) {
                     qNumber = 0;
                   }
                 });
@@ -103,7 +103,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  if (!qb.questionBank[qNumber].questionAnswer) {
+                  if (!qb.getQuestionAns(qNumber)) {
                     scoreKeeper.add(Icon(
                       Icons.check,
                       color: Colors.green,
@@ -115,7 +115,7 @@ class _QuizPageState extends State<QuizPage> {
                     ));
                   }
                   qNumber++;
-                  if (qNumber >= qb.questionBank.length) {
+                  if (qNumber >= qb.totalQue()) {
                     qNumber = 0;
                   }
                 });
