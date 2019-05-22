@@ -34,8 +34,8 @@ class QuizBrain{
   void nextQue(){
       if(_qNumber < _questionBank.length-1)
         _qNumber++;
-      else 
-        _qNumber = 0;
+      //else 
+      //  _qNumber = 0;
   }
 
   String getQuestionText(){

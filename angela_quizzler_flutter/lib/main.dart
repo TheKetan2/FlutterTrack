@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'question_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() => runApp(Quizzler());
 
@@ -32,10 +33,9 @@ class _QuizPageState extends State<QuizPage> {
   int qNumber = 0;
 
   void checkAns(bool userAns) {
-
     bool correctAns = qb.getQuestionAns();
     setState(() {
-      if (userAns  == correctAns) {
+      if (userAns == correctAns) {
         scoreKeeper.add(Icon(
           Icons.check,
           color: Colors.green,
@@ -47,6 +47,12 @@ class _QuizPageState extends State<QuizPage> {
         ));
       }
       qb.nextQue();
+      qNumber++;
+      if (qNumber >= qb.totalQue()) {
+        Alert(context: context, type: AlertType.error,title: "Over", desc: "You solved all questions")
+            .show();
+        qNumber = 0;
+      }
     });
   }
 
@@ -103,7 +109,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-               checkAns(false);
+                checkAns(false);
               },
             ),
           ),
