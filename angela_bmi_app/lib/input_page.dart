@@ -6,6 +6,15 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+  Widget showContainer(){
+    return Container(
+                  margin: EdgeInsets.all(15.0),
+                  decoration: BoxDecoration(
+                      color: Color(0xff1d1e33),
+                      borderRadius: BorderRadius.circular(10.0)),
+                );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,46 +27,21 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                    child: Container(
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                      color: Color(0xff1d1e33),
-                      borderRadius: BorderRadius.circular(10.0)),
-                )),
+                    child: showContainer() ),
                 Expanded(
-                    child: Container(
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                      color: Color(0xff1d1e33),
-                      borderRadius: BorderRadius.circular(10.0)),
-                )),
+                    child: showContainer()),
               ],
             ),
           ),
           Expanded(
-              child: Container(
-            margin: EdgeInsets.all(15.0),
-            decoration: BoxDecoration(
-                color: Color(0xff1d1e33),
-                borderRadius: BorderRadius.circular(10.0)),
-          )),
+              child: showContainer()),
           Expanded(
             child: Row(
               children: <Widget>[
                 Expanded(
-                    child: Container(
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                      color: Color(0xff1d1e33),
-                      borderRadius: BorderRadius.circular(10.0)),
-                )),
+                    child: showContainer()),
                 Expanded(
-                    child: Container(
-                  margin: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                      color: Color(0xff1d1e33),
-                      borderRadius: BorderRadius.circular(10.0)),
-                )),
+                    child: showContainer()),
               ],
             ),
           ),
