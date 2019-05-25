@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'icon_content.dart';
+import 'reusable_card.dart';
 
 const btmHeight = 80.0;
 const Color coulor = Color(0xff1d1e33);
@@ -24,42 +26,13 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                     child: ResusableCard(
-                        clr: coulor,
-                        cardChild: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(FontAwesomeIcons.mars, size: 80.0),
-                            SizedBox(
-                              height: 15.0,
-                            ),
-                            Text(
-                              'MALE',
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Color(0xff8d8e98),
-                              ),
-                            ),
-                          ],
-                        ))),
+                        clr: coulor, cardChild: new IconContent(gender: 'Male',
+                        iconData: FontAwesomeIcons.mars,))),
                 Expanded(
                     child: ResusableCard(
                         clr: coulor,
-                        cardChild: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(FontAwesomeIcons.venus, size: 80.0),
-                            SizedBox(
-                              height: 15.0,
-                            ),
-                            Text(
-                              'MALE',
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Color(0xff8d8e98),
-                              ),
-                            ),
-                          ],
-                        ))),
+                        cardChild: new IconContent(gender: 'Female',
+                        iconData: FontAwesomeIcons.venus,))), 
               ],
             ),
           ),
@@ -87,18 +60,4 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class ResusableCard extends StatelessWidget {
-  ResusableCard({@required this.clr, this.cardChild});
-  final Color clr;
-  final Widget cardChild;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: cardChild,
-      margin: EdgeInsets.all(15.0),
-      decoration:
-          BoxDecoration(color: clr, borderRadius: BorderRadius.circular(10.0)),
-    );
-  }
-}
