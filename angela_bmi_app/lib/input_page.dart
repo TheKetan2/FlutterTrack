@@ -9,10 +9,7 @@ const Color btmColor = Color(0xffeb1555);
 const Color activeColor = Color(0xff1d1e33);
 const Color inactiveColor = Color(0xff111328);
 
-enum Gender{
-  male,
-  female
-}
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -20,7 +17,6 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  
   Gender selectedGender;
 
   @override
@@ -35,35 +31,33 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                    child: GestureDetector(
-                  onTap: () {
-                    print("Tapped");
-                    setState(() {
-                      selectedGender = Gender.male;
-                    });
-                    
-                  },
-                  child: ResusableCard(
-                      clr: selectedGender == Gender.male?activeColor:inactiveColor,
-                      cardChild: new IconContent(
-                        gender: 'Male',
-                        iconData: FontAwesomeIcons.mars,
-                      )),
-                )),
+                    child: ResusableCard(
+                        onPress: () {
+                          setState(() {
+                            selectedGender = Gender.male;
+                          });
+                        },
+                        clr: selectedGender == Gender.male
+                            ? activeColor
+                            : inactiveColor,
+                        cardChild: new IconContent(
+                          gender: 'Male',
+                          iconData: FontAwesomeIcons.mars,
+                        ))),
                 Expanded(
-                    child: GestureDetector(
-                      onTap: (){
-                        setState(() {
-                          selectedGender = Gender.female;
-                        });
-                      },
-                  child: ResusableCard(
-                      clr: selectedGender == Gender.female?activeColor:inactiveColor,
-                      cardChild: new IconContent(
-                        gender: 'Female',
-                        iconData: FontAwesomeIcons.venus,
-                      )),
-                )),
+                    child: ResusableCard(
+                        onPress: () {
+                          setState(() {
+                            selectedGender = Gender.female;
+                          });
+                        },
+                        clr: selectedGender == Gender.female
+                            ? activeColor
+                            : inactiveColor,
+                        cardChild: new IconContent(
+                          gender: 'Female',
+                          iconData: FontAwesomeIcons.venus,
+                        ))),
               ],
             ),
           ),
