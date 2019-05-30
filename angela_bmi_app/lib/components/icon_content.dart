@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'package:BMI/constants.dart';
 class IconContent extends StatelessWidget {
   const IconContent({this.gender, this.iconData});
   final String gender; 
