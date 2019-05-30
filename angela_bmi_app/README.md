@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Snapshot
 Input Page: 
-![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/ui.PNG)
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/ui.png)
 
 Result Page:
-![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/result.PNG)
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/result.png)
