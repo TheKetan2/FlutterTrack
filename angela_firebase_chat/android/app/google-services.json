@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "688628810403",
+    "firebase_url": "https://flash-chat-ketan.firebaseio.com",
+    "project_id": "flash-chat-ketan",
+    "storage_bucket": "flash-chat-ketan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688628810403:android:8e79ec8d931c76d9",
+        "android_client_info": {
+          "package_name": "com.example.angela_firebase_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688628810403-554tm8q7jncc3ko8iu9i26leegp79m10.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC80r22uPtA77XJp03P3D2dqs88IFS11cM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688628810403-554tm8q7jncc3ko8iu9i26leegp79m10.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
