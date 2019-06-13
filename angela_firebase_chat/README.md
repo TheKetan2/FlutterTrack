@@ -1,5 +1,7 @@
 # angela_firebase_chat
 
+# angela_bim_app
+
 A new Flutter project.
 
 ## Getting Started
@@ -14,3 +16,20 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
+
+## Note: If you want to run this project then generate google-services.json file from your Firebase console and paste it in android/app folder.
+
+## Snapshot
+# Welcom Screen: 
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/welcome.png)
+
+# Register Screen:
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/register.png)
+
+# Log in Screen:
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/login.png)
+
+# Chat Screen:
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/chat.png)
+
+
