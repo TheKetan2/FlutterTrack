@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class Products extends StatelessWidget {
   final List<String> products;
 
-  const Products({Key key, this.products});
+  Products({this.products}) {
+    print("Product class executed");
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -12,7 +14,7 @@ class Products extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Image.asset('assets/cam.png'),
-                    Text('element'),
+                    Text(products[0]),
                   ],
                 ),
               ))
