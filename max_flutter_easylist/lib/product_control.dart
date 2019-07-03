@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class ProductControl extends StatelessWidget {
-  final Function onClick;
+  final Function addProduct;
 
-  const ProductControl({Key key, this.onClick}) : super(key: key);
+  ProductControl(this.addProduct);
 
   @override
-  Widget build(BuildContext context) {
-    return RaisedButton(
+    Widget build(BuildContext context) {
+      return RaisedButton(
             color: Theme.of(context).primaryColor,
-            child: Text('Add Product'),
             onPressed: () {
-              onClick('New Something');
+              addProduct('Sweets');
             },
+            child: Text('Add Product'),
           );
-  }
+    }
 }
