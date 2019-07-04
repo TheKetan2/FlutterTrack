@@ -29,8 +29,8 @@ class Products extends StatelessWidget {
         itemCount: products.length,
       );
     }
-
-    print('[Products Widget] build()');
-    return productList;
-  }
+      print('[Products Widget] build()');
+      return productList;
+    }
+  
 }
