@@ -19,4 +19,8 @@ samples, guidance on mobile development, and a full API reference.
 ### Quiz Page
 ![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/maxquizone.png)
 ### Result Page
+<<<<<<< HEAD
 ![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/maxquiztwo.png)
+=======
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/maxquiztwo.png)
+>>>>>>> 5f119a0683244800ec01756d77a8c603404321bf
