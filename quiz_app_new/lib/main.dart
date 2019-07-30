@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'question.dart';
 import 'answer.dart';
+import 'quiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,13 +20,13 @@ class _MyAppState extends State<MyApp> {
     print(_questionIndex);
     setState(() {
       _questionIndex++;
-      _questionIndex %= 2;
+      //_questionIndex %= 2;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    var _questions = [
       {
         'questionText': 'What is your fav color?',
         'answerKeys': ['Black', 'Red', 'Green', 'White']
@@ -62,20 +63,11 @@ class _MyAppState extends State<MyApp> {
             'Quiz App',
           ),
         ),
-        body: Column(
-          children: <Widget>[
-            Question(
-              queText: questions[_questionIndex]['questionText'],
-            ),
-            ...(questions[_questionIndex]['answerKeys'] as List<String>)
-                .map((answer) {
-              return Answer(
-                buttonText: answer,
-                onClicked: _ansQuestion,
-              );
-            }).toList(),
-          ],
-        ),
+        body: _questionIndex < _questions.length
+            ? Quiz(answerQue: _ansQuestion, question: _questions, index: _questionIndex,)
+            : Center(
+                child: Text('No more questions.'),
+              ),
       ),
     );
   }
