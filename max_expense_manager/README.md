@@ -19,12 +19,12 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Item List View
 
-![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/maxlistview.PNG)
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/maxlistview.png)
 
 ## Items Input View
 
-![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/maxlistInput.PNG)
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/maxlistInput.png)
 
 # Items date input view
 
-![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/maxlistdate.PNG)
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/maxlistdate.png)
