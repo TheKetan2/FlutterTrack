@@ -69,6 +69,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
+  bool _showChart = false;
+
   void _addNewTransaction(
       String txTitle, double txAmount, DateTime selectedDate) {
     final newTx = Transaction(
@@ -123,25 +125,40 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Container(
-              height: (MediaQuery.of(context).size.height -
-                      appBar.preferredSize.height -
-                      MediaQuery.of(context).padding.top) *
-                  0.30,
-              child: Chart(
-                recentTransaction: _recentTransactions,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('Show Chart'),
+                Switch(
+                    value: _showChart,
+                    onChanged: (val) {
+                      setState(() {
+                        _showChart = val;
+                        print(_showChart.toString());
+                      });
+                    }),
+              ],
             ),
-            Container(
-              height: (MediaQuery.of(context).size.height -
-                      appBar.preferredSize.height -
-                      MediaQuery.of(context).padding.top) *
-                  0.70,
-              child: TransactionList(
-                transactions: _userTransactions,
-                deleteTx: _deleteTransaction,
-              ),
-            ),
+            _showChart
+                ? Container(
+                    height: (MediaQuery.of(context).size.height -
+                            appBar.preferredSize.height -
+                            MediaQuery.of(context).padding.top) *
+                        0.7,
+                    child: Chart(
+                      recentTransaction: _recentTransactions,
+                    ),
+                  )
+                : Container(
+                    height: (MediaQuery.of(context).size.height -
+                            appBar.preferredSize.height -
+                            MediaQuery.of(context).padding.top) *
+                        0.70,
+                    child: TransactionList(
+                      transactions: _userTransactions,
+                      deleteTx: _deleteTransaction,
+                    ),
+                  )
           ],
         ),
       ),

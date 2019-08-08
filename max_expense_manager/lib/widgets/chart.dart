@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:max_expense_manager/widgets/chart_bar.dart';
 import '../models/transaction.dart';
 import 'package:intl/intl.dart';
 
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransaction;
+  var portrait = Orientation.portrait;
   Chart({this.recentTransaction});
 
   List<Map<String, Object>> get groupTransactionValues {
@@ -22,8 +24,8 @@ class Chart extends StatelessWidget {
           totalSum = recentTransaction[i].amount;
         }
       }
-      print(DateFormat.E().format(weekDay));
-      print(totalSum);
+      //print(DateFormat.E().format(weekDay));
+      //print(totalSum);
 
       return {
         'day': DateFormat.E().format(weekDay).substring(0, 1),
@@ -43,7 +45,7 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(groupTransactionValues);
+    //print(groupTransactionValues);
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(20),
