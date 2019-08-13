@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:max_meals_app/categories_screen.dart';
-import 'package:max_meals_app/category_meals.dart';
+import 'package:max_meals_app/screens/categories_screen.dart';
+import 'package:max_meals_app/screens/category_meals.dart';
 
 void main() => runApp(MyApp());
 
