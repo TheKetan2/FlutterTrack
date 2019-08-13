@@ -20,13 +20,13 @@ class MealDetailsScreen extends StatelessWidget {
     return Container(
       // color: Colors.amberAccent,
       decoration: BoxDecoration(
-        color: Colors.grey,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
       height: 200,
-      width: 300,
+      width: 400,
       child: child,
     );
   }
@@ -40,54 +40,66 @@ class MealDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('${selectedMeal.title}'),
       ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            height: 300,
-            width: double.infinity,
-            child: Image.network(
-              selectedMeal.imageUrl,
-              fit: BoxFit.cover,
+      backgroundColor: Color.fromRGBO(255, 255, 200, 0.7),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(
+                selectedMeal.imageUrl,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          buildSectionTitle(context, 'Ingredients'),
-          buildContainer(
-            ListView.builder(
-              itemBuilder: ((ctx, index) {
-                return Card(
-                  color: Theme.of(context).accentColor,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 10,
+            buildSectionTitle(context, 'Ingredients'),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: ((ctx, index) {
+                  return Card(
+                    color: Theme.of(context).accentColor,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: 10,
+                      ),
+                      child: Text(
+                        selectedMeal.ingredients[index],
+                      ),
                     ),
-                    child: Text(
-                      selectedMeal.ingredients[index],
-                    ),
-                  ),
-                );
-              }),
-              itemCount: selectedMeal.ingredients.length,
+                  );
+                }),
+                itemCount: selectedMeal.ingredients.length,
+              ),
             ),
-          ),
-          buildSectionTitle(context, 'Steps'),
-          buildContainer(ListView.builder(
-            itemBuilder: ((ctx, index) {
-              return Card(
-                color: Theme.of(context).accentColor,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 5,
-                    horizontal: 10,
-                  ),
-                  child: Text(
-                    selectedMeal.steps[index],
-                  ),
-                ),
-              );
-            }),
-          )),
-        ],
+            buildSectionTitle(context, 'Steps'),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: ((ctx, index) {
+                  return Column(
+                    children: <Widget>[
+                      ListTile(
+                        leading: CircleAvatar(
+                          child: Text(
+                            '${index + 1}',
+                          ),
+                        ),
+                        title: Text(
+                          selectedMeal.steps[index],
+                        ),
+                      ),
+                      Divider(
+                        height: 5,
+                        color: Colors.grey,
+                      ),
+                    ],
+                  );
+                }),
+                itemCount: selectedMeal.steps.length,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
