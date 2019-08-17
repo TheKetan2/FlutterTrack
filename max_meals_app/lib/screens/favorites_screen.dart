@@ -7,6 +7,8 @@ class FovoritesScreen extends StatelessWidget {
   FovoritesScreen(this.favoriteMeal);
   @override
   Widget build(BuildContext context) {
+    //print(favoriteMeal.length);
+
     if (favoriteMeal.isEmpty) {
       return Center(
         child: Text('You have no fovorite yet - start adding some'),
