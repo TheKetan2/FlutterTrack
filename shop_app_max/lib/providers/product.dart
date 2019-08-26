@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 class Product with ChangeNotifier {
   final String id;
@@ -7,6 +7,7 @@ class Product with ChangeNotifier {
   final double price;
   final String imageUrl;
   bool isFavorite;
+
   Product({
     @required this.id,
     @required this.title,
