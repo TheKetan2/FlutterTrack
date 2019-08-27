@@ -9,13 +9,30 @@ class EditProductScreen extends StatefulWidget {
 class _EditProductScreenState extends State<EditProductScreen> {
   final _priceFocusNode = FocusNode();
   final _descriptionFocusNode = FocusNode();
+  final _imageURLFocusNode = FocusNode();
+
   final _imageURLCOntroller = TextEditingController();
+
+  void _updateImageURL() {
+    if (_imageURLFocusNode.hasFocus) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    _imageURLFocusNode.addListener(_updateImageURL);
+
+    super.initState();
+  }
 
   @override
   void dispose() {
+    _imageURLFocusNode.removeListener(_updateImageURL);
     _priceFocusNode.dispose();
     _descriptionFocusNode.dispose();
     _imageURLCOntroller.dispose();
+    _imageURLFocusNode.dispose();
     super.dispose();
   }
 
@@ -85,6 +102,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       keyboardType: TextInputType.url,
                       textInputAction: TextInputAction.done,
                       controller: _imageURLCOntroller,
+                      focusNode: _imageURLFocusNode,
                     ),
                   )
                 ],
