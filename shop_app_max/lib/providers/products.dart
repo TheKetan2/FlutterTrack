@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/providers/product.dart' as prefix0;
 
 import './product.dart';
 
@@ -40,9 +41,6 @@ class Products with ChangeNotifier {
   // var _showFavoritesOnly = false;
 
   List<Product> get items {
-    // if (_showFavoritesOnly) {
-    //   return _items.where((prodItem) => prodItem.isFavorite).toList();
-    // }
     return [..._items];
   }
 
@@ -74,6 +72,21 @@ class Products with ChangeNotifier {
     );
     _items.add(newProduct);
     // _items.insert(0, newProduct); // at the start of the list
+    notifyListeners();
+  }
+
+  void updateProducts(String id, Product newProduct) {
+    final prodIndex = _items.indexWhere((prod) => prod.id == id);
+    if (prodIndex >= 0) {
+      _items[prodIndex] = newProduct;
+      notifyListeners();
+    } else {
+      print('No product found...');
+    }
+  }
+
+  void deleteProduc(String id) {
+    _items.removeWhere((prod) => prod.id == id);
     notifyListeners();
   }
 }
