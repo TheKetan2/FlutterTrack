@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/providers/products.dart';
 import 'package:provider/provider.dart';
-
+import 'package:http/http.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/products_grid.dart';
 import '../widgets/badge.dart';
@@ -19,6 +20,13 @@ class ProductsOverviewScreen extends StatefulWidget {
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   var _showOnlyFavorites = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    Provider.of<Products>(context).fetchAndSetProducts();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
