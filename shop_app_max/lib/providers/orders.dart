@@ -28,13 +28,39 @@ class Orders with ChangeNotifier {
   Future<void> fetchAndSetOrders() async {
     const url = 'https://fluttershopapp-cdf02.firebaseio.com/orders.json';
     final response = await http.get(url);
+    final List<OrderItem> loadedOrders = [];
+    final extractedData = json.decode(response.body) as Map<String, dynamic>;
+
+    if (extractedData == null) {
+      return;
+    }
+
+    extractedData.forEach((orderId, orderData) {
+      loadedOrders.add(OrderItem(
+        id: orderId,
+        amount: orderData['amount'],
+        dateTime: DateTime.parse(orderData['dateTime']),
+        products: (orderData['products'] as List<dynamic>)
+            .map((item) => CartItem(
+                  id: item['id'],
+                  price: item['price'],
+                  quantity: item['quantity'],
+                  title: item['title'],
+                ))
+            .toList(),
+      ));
+    });
+    _orders = loadedOrders.reversed.toList();
+    notifyListeners();
   }
 
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
     const url = 'https://fluttershopapp-cdf02.firebaseio.com/orders.json';
     final timestamp = DateTime.now();
-    final response = await http.post(url,
-        body: json.encode({
+    final response = await http.post(
+      url,
+      body: json.encode(
+        {
           'amount': total,
           'dateTime': timestamp.toIso8601String(),
           'products': cartProducts
@@ -45,7 +71,9 @@ class Orders with ChangeNotifier {
                     'price': cp.price,
                   })
               .toList(),
-        }));
+        },
+      ),
+    );
     _orders.insert(
       0,
       OrderItem(
