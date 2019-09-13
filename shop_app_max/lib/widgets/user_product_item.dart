@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../screens/edit_product_screen.dart';
 import 'package:provider/provider.dart';
+
+import '../screens/edit_product_screen.dart';
 import '../providers/products.dart';
 
 class UserProductItem extends StatelessWidget {
@@ -37,9 +38,11 @@ class UserProductItem extends StatelessWidget {
                   await Provider.of<Products>(context, listen: false)
                       .deleteProduct(id);
                 } catch (error) {
-                  scaffold.showSnackBar(SnackBar(
-                    content: Text('Deleting failed'),
-                  ));
+                  scaffold.showSnackBar(
+                    SnackBar(
+                      content: Text('Deleting failed!', textAlign: TextAlign.center,),
+                    ),
+                  );
                 }
               },
               color: Theme.of(context).errorColor,
