@@ -73,7 +73,8 @@ class Products with ChangeNotifier {
   // }
 
   Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
-    final filterString = filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
+    final filterString =
+        filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url =
         'https://flutter-update.firebaseio.com/products.json?auth=$authToken&$filterString';
     try {
@@ -100,9 +101,7 @@ class Products with ChangeNotifier {
       });
       _items = loadedProducts;
       notifyListeners();
-    } catch (error) {
-      throw (error);
-    }
+    } catch (error) {}
   }
 
   Future<void> addProduct(Product product) async {
