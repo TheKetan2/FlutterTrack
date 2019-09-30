@@ -2,8 +2,26 @@ import 'package:flutter/material.dart';
 
 import '../widgets/task_list.dart';
 import 'add_task_screen.dart';
+import '../modals/task.dart';
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
+  @override
+  _TaskScreenState createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+  List<Task> tasks = [
+    Task(name: 'Buy milk'),
+    Task(name: 'Buy eggs'),
+    Task(name: 'Buy bread'),
+  ];
+
+  void addTask(String task) {
+    setState(() {
+      tasks.add(Task(name: task));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +32,9 @@ class TaskScreen extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            builder: (context) => AddTaskScreen(),
+            builder: (context) => AddTaskScreen(
+              addTask: addTask,
+            ),
           );
         },
       ),
@@ -49,7 +69,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '12 Task',
+                  '${tasks.length} Task',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -71,7 +91,9 @@ class TaskScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: TaskList(),
+              child: TaskList(
+                tasks: tasks,
+              ),
             ),
           ),
         ],

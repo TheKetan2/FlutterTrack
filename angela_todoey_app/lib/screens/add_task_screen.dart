@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import '../widgets/task_list.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  final Function addTask;
+  AddTaskScreen({this.addTask});
+  final myTextController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    void addingTaskDone() {
+      addTask(myTextController.text);
+      Navigator.of(context).pop();
+    }
+
     return Container(
       color: Color(0xff757575),
       child: Container(
@@ -29,6 +39,7 @@ class AddTaskScreen extends StatelessWidget {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
+              controller: myTextController,
             ),
             SizedBox(
               height: 20,
@@ -43,7 +54,15 @@ class AddTaskScreen extends StatelessWidget {
                 'Add',
                 style: TextStyle(color: Colors.white),
               ),
-              onPressed: () {},
+              onPressed: () {
+                myTextController.text.isEmpty
+                    ? AlertDialog(
+                        title: Text('Please enter the task title'),
+                      )
+                    : addingTaskDone();
+
+                print(myTextController.text);
+              },
             )
           ],
         ),
