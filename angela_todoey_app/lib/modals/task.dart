@@ -1,4 +1,6 @@
-class Task {
+import 'package:flutter/foundation.dart';
+
+class Task extends ChangeNotifier {
   final String name;
   bool isDone;
 
@@ -8,5 +10,6 @@ class Task {
   });
   void toggleDone() {
     isDone = !isDone;
+    notifyListeners();
   }
 }

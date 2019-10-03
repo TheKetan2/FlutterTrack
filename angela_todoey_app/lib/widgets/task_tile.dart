@@ -1,4 +1,6 @@
+import 'package:angela_todoey_app/modals/task_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TaskTile extends StatelessWidget {
   final bool isChecked;
@@ -19,6 +21,7 @@ class TaskTile extends StatelessWidget {
         activeColor: Colors.lightBlueAccent,
         onChanged: checkboxCallback,
       ),
+      onLongPress: () => Provider.of<TaskData>(context).deleteTask(taskTitle),
     );
   }
 }
