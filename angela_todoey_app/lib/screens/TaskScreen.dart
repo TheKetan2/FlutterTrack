@@ -3,24 +3,21 @@ import 'package:flutter/material.dart';
 import '../widgets/task_list.dart';
 import 'add_task_screen.dart';
 import '../modals/task.dart';
+import 'package:provider/provider.dart';
+import '../modals/task_data.dart';
 
-class TaskScreen extends StatefulWidget {
-  @override
-  _TaskScreenState createState() => _TaskScreenState();
-}
+class TaskScreen extends StatelessWidget {
+//   @override
+//   _TaskScreenState createState() => _TaskScreenState();
+// }
 
-class _TaskScreenState extends State<TaskScreen> {
-  List<Task> tasks = [
-    Task(name: 'Buy milk'),
-    Task(name: 'Buy eggs'),
-    Task(name: 'Buy bread'),
-  ];
-
-  void addTask(String task) {
-    setState(() {
-      tasks.add(Task(name: task));
-    });
-  }
+// class _TaskScreenState extends State<TaskScreen> {
+  // void addTask(String task) {
+  //   setState(() {
+  //     // tasks.add(Task(name: task));
+  //     Provider.of<TaskData>(context).tasks.add(Task(name: task));
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +30,9 @@ class _TaskScreenState extends State<TaskScreen> {
           showModalBottomSheet(
             context: context,
             builder: (context) => AddTaskScreen(
-              addTask: addTask,
-            ),
+                  //addTask: ,
+                  addTask: Provider.of<TaskData>(context).addTask,
+                ),
           );
         },
       ),
@@ -69,7 +67,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   ),
                 ),
                 Text(
-                  '${tasks.length} Task',
+                  '${Provider.of<TaskData>(context).taskCount}Task',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -92,7 +90,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 ),
               ),
               child: TaskList(
-                tasks: tasks,
+                tasks: Provider.of<TaskData>(context).tasks,
               ),
             ),
           ),

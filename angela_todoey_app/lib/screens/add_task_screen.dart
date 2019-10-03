@@ -1,5 +1,6 @@
+import 'package:angela_todoey_app/modals/task_data.dart';
 import 'package:flutter/material.dart';
-import '../widgets/task_list.dart';
+import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
   final Function addTask;
@@ -9,7 +10,7 @@ class AddTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void addingTaskDone() {
-      addTask(myTextController.text);
+      Provider.of<TaskData>(context).addTask(myTextController.text);
       Navigator.of(context).pop();
     }
 
