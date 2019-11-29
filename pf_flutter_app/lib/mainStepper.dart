@@ -23,15 +23,16 @@ class _MyAppState extends State<MyApp> {
           onStepCancel: _currentStep>0 ? ()=> setState(() => _currentStep -=1): null,
           steps: [
             Step(
-              title: Text("Get Ready"), isActive: true,
+              title: Text("Get Ready"), isActive: _currentStep==0,
               content: Text("Let's begin...")
             ),
             Step(
-              title: Text("Get Set"), isActive: true,
+              title: Text("Get Set"), isActive: _currentStep == 1,
               content: Text("Ok, just a little more...")
             ),
             Step(
-              title: Text("Get Set"), isActive: true,
+              title: Text("Go"), isActive: _currentStep==2,
+      
               content: Text("And, we are done!")
             )
           ],
