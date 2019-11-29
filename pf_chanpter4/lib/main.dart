@@ -1,51 +1,73 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  var _showFirst = true;
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              AnimatedCrossFade(
-                duration: Duration(seconds: 2),
-                firstChild: FlutterLogo(
-                  style: FlutterLogoStyle.horizontal,
-                  size: 100.0,
-                ),
-                secondChild: FlutterLogo(
-                  style: FlutterLogoStyle.stacked,
-                  size: 100.0,
-                  
-                ),
-                
-                crossFadeState: _showFirst
-                    ? CrossFadeState.showFirst
-                    : CrossFadeState.showSecond,
+        body: Column(
+          children: <Widget>[
+            Container(height: 100,),
+            Table(
+              border: TableBorder(
+                top: BorderSide(width: 2),
+                bottom: BorderSide(width: 2),
+                left: BorderSide(width: 2),
+                right: BorderSide(width: 2)
               ),
-              RaisedButton(
-                child: Text("Cross-Fade!"),
-                onPressed: () {
-                  
-                  setState(() {
-                    _showFirst = !_showFirst;
-                  });
-                },
-              )
-            ],
-          ),
+              children: [
+               TableRow(
+                 children: [
+                   Center(child: Padding(
+                     padding: EdgeInsets.all(10),
+                     child: Text("1"),
+                   ),),
+                   Center(child: Padding(
+                     padding: EdgeInsets.all(10),
+                     child: Text("2"),
+                   ),),
+                   Center(child: Padding(
+                     padding: EdgeInsets.all(10),
+                     child: Text("3"),
+                   ),)
+
+
+                 ]
+               ),
+               TableRow(
+                 children: [
+                   Center(child: Padding(
+                     padding: EdgeInsets.all(10),
+                     child: Text("1"),
+                   ),),
+                   Center(child: Padding(
+                     padding: EdgeInsets.all(10),
+                     child: Text("2"),
+                   ),),
+                   Center(child: Padding(
+                     padding: EdgeInsets.all(10),
+                     child: Text("3"),
+                   ),)
+
+
+                 ]
+               ),
+               
+              ],
+              
+            ),
+            Chip(
+              avatar: CircleAvatar(
+                backgroundColor: Colors.red,
+              ),
+              label: Text("Ketan Ramteke"),
+            )
+          ],
         ),
       ),
+      
     );
   }
 }
