@@ -16,6 +16,40 @@ class MyApp extends StatelessWidget {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    _showBottomSheet() {
+      showModalBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return new Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text("What is your fav pet?"),
+                FlatButton(
+                  child: Text("Dog"),
+                  onPressed: () {
+                    print("Dog");
+                    Navigator.of(context).pop();
+                  },
+                ),
+                FlatButton(
+                  child: Text("Cat"),
+                  onPressed: () {
+                    print("Cat");
+                    Navigator.of(context).pop();
+                  },
+                ),
+                FlatButton(
+                  child: Text("Bird"),
+                  onPressed: () {
+                    print("Bird");
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+    }
+
     _showSnackBar() {
       Scaffold.of(context).showSnackBar(SnackBar(
         backgroundColor: Colors.red,
@@ -61,31 +95,28 @@ class Home extends StatelessWidget {
     }
 
     return Scaffold(
-      body: 
-        Center(
-          
-          child: Container(
-            
-            child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                
-                   RaisedButton(
-                    child: Text("Show it"),
-                    onPressed: _showIt,
-                  ),
-               
-                RaisedButton(
-                    child: Text("Show it"),
-                    onPressed: _showSnackBar,
-                  ),
-                
-              ],
-            ),
+      body: Center(
+        child: Container(
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              RaisedButton(
+                child: Text("Show it"),
+                onPressed: _showIt,
+              ),
+              RaisedButton(
+                child: Text("Show it"),
+                onPressed: _showSnackBar,
+              ),
+              RaisedButton(
+                child: Text("Show it"),
+                onPressed: _showBottomSheet,
+              ),
+            ],
           ),
         ),
-      
+      ),
     );
   }
 }
