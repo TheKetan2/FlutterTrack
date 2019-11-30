@@ -10,7 +10,7 @@ import "utils.dart" as utils;
 void main() {
   startMeUp() async {
     Directory docDir = await getApplicationDocumentsDirectory();
-   // utils.docDir = docsDir;
+    utils.docsDir = docDir;
     runApp(FlutterBook());
   }
 
