@@ -21,6 +21,10 @@ class FlutterBook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.green,
+        accentColor: Colors.greenAccent
+      ),
       
       home: DefaultTabController(
         length: 4,
