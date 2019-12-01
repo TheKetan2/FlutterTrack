@@ -1,10 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:personal_info_manager/tasks/Task.dart';
+import 'package:personal_info_manager/notes/NotesModel.dart';
+import 'package:personal_info_manager/tasks/Tasks.dart';
+import 'package:personal_info_manager/tasks/TasksModel.dart';
 import "appointments/Appointments.dart";
+import 'package:personal_info_manager/notes/Notes.dart';
 import "contacts/Contacts.dart";
-import 'notes/Notes.dart';
 import "utils.dart" as utils;
 
 void main() {
@@ -56,7 +58,7 @@ class FlutterBook extends StatelessWidget {
               Appointments(),
               Contacts(),
               Notes(),
-              Tasks(),
+              Tasks()              
             ],
           ),
         ),
