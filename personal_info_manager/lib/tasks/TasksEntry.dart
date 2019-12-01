@@ -31,6 +31,8 @@ class TasksEntry extends StatelessWidget {
                     child: Text("Cancel"),
                     onPressed: () {
                       FocusScope.of(context).requestFocus(FocusNode());
+                      // Navigator.of(context).pop();
+                      inModel.setStackIndex(0);
                     },
                   ),
                   Spacer(),
@@ -103,12 +105,10 @@ class TasksEntry extends StatelessWidget {
 
     tasksModel.setStackIndex(0);
 
-    Scaffold.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.green,
-        duration: Duration(seconds: 2),
-        content:  Text("Task saved"),
-      )
-    );
+    Scaffold.of(context).showSnackBar(SnackBar(
+      backgroundColor: Colors.green,
+      duration: Duration(seconds: 2),
+      content: Text("Task saved"),
+    ));
   }
 }

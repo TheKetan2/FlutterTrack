@@ -28,6 +28,7 @@ class TasksList extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
               itemCount: tasksModel.entityList.length,
               itemBuilder: (BuildContext context, int inIndex) {
+                // print(tasksModel.entityList[inIndex]);
                 Task task = tasksModel.entityList[inIndex];
                 String sDueDate;
                 if (task.dueDate != null) {
