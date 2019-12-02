@@ -52,7 +52,7 @@ class AppointmentsDBWorker {
 
   Future create(Appointment inAppointment) async {
     Database db = await database;
-    var val = await db.rawQuery("SELCET MAX(id)+1 AS id FROM appointments");
+    var val = await db.rawQuery("SELECT MAX(id) + 1 AS id FROM appointments");
     int id = val.first["id"];
     if (id == null) {
       id = 1;

@@ -16,13 +16,17 @@ class Appointments extends StatelessWidget {
       child: ScopedModelDescendant<AppointmentsModel>(
         builder: (context, inChild, inModel) {
           return IndexedStack(
+            index: inModel.stackIndex,
             children: <Widget>[
+              
               AppointmentsList(),
-              AppointmentsEntry(),
-            ],
-          );
-        },
-      ),
-    );
-  }
-}
+                            AppointmentsEntry(),
+                          ],
+                        );
+                      },
+                    ),
+                  );
+                }
+              }
+              
+          
