@@ -20,4 +20,4 @@ Learned so many new things.
 
 ## Screencast
 
-    ![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/pim.gif)
+![alt text](https://github.com/TheKetan2/FlutterTrack/blob/master/snapshots/pim.gif)
