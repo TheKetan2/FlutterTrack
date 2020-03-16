@@ -9,3 +9,5 @@ I will post my Flutter apps and related codebase here as I try to learn it.
 
 Thanks for stopping by and if you find this repo helpfull then do consider giving it a star and come hang out with me on twitter: @theketan2.
 Happy coding....
+
+Got to finish Flutter in Action this week.
