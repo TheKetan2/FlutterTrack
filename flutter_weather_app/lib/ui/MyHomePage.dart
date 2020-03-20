@@ -11,15 +11,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlue,
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Weather(), 
+      body: Weather(),
     );
   }
 }
