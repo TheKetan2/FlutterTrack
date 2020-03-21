@@ -1,12 +1,16 @@
 import "package:flutter/material.dart";
+import 'package:flutter_weather_app/model/WeatherData.dart';
 import "package:intl/intl.dart";
 
 class Weather extends StatelessWidget {
+  final WeatherData weatherData;
+  Weather({@required this.weatherData});
+
   @override
   Widget build(BuildContext context) {
     Widget dateSection = Container(
       child: Text(
-        DateFormat("MMMM d,H:m").format(DateTime.now()),
+        DateFormat("MMMM d, H:m").format(DateTime.now()),
         style: TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.white,
@@ -21,7 +25,7 @@ class Weather extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "20",
+            weatherData.temp.toStringAsFixed(0),
             style: TextStyle(
               fontSize: 80.0,
             ),
@@ -42,11 +46,10 @@ class Weather extends StatelessWidget {
               ),
             ),
           ),
-          Image.asset(
-            "asset/img/cloudy.png",
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
+          Image.network(
+            "https://openweathermap.org/img/w/${weatherData.icon}.png",
+            width: 100.0,
+            height: 100.0,
           )
         ],
       ),
@@ -58,7 +61,7 @@ class Weather extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "Pune",
+            weatherData.name,
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
@@ -66,7 +69,7 @@ class Weather extends StatelessWidget {
             ),
           ),
           Text(
-            "Cloudy",
+            weatherData.main,
             style: TextStyle(
               fontSize: 24.0,
               color: Colors.white,

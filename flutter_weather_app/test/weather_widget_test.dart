@@ -9,3 +9,12 @@ void main() {
     expect(find.byType(RichText), findsWidgets);
   });
 }
+
+Widget directAncestor(Widget child) {
+  return Directionality(
+    textDirection: TextDirection.rtl,
+    child: Center(
+      child: child,
+    ),
+  );
+}
