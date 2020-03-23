@@ -32,6 +32,52 @@ class _MyHomePageState extends State<MyHomePage> {
   int total_cases = 0, recovered = 0, deaths = 0;
   bool isLoading = true;
   String imgUrl = "";
+  List detailData = [];
+
+  @override
+  initState() {
+    _getDetailedData();
+    _getCovidData();
+    super.initState();
+  }
+
+  void _getDetailedData() async {
+    http.Response data =
+        await http.get("https://covid19.mathdro.id/api/confirmed");
+    dynamic coronaDetail = jsonDecode(data.body);
+
+    setState(() {
+      detailData = coronaDetail;
+    });
+    for (var location in detailData) {
+      print(location["countryRegion"]);
+    }
+  }
+
+// Method to generate all the markers on map from detailData
+  List<flutterMap.Marker> generateMarker() {
+    List<flutterMap.Marker> marker = [];
+    for (var location in detailData) {
+      marker.add(
+        flutterMap.Marker(
+          width: 80.0,
+          height: 40.0,
+          point: new latLng.LatLng(
+            location["lat"].toDouble(),
+            location["long"].toDouble(),
+          ),
+          builder: (context) => new Container(
+            child: new Icon(
+              Icons.pin_drop,
+              color: Colors.red,
+              size: 10,
+            ),
+          ),
+        ),
+      );
+    }
+    return marker;
+  }
 
   void _getCovidData() async {
     setState(() {
@@ -119,27 +165,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           subdomains: ['a', 'b', 'c'],
                         ),
                         new flutterMap.MarkerLayerOptions(
-                          markers: [
-                            new flutterMap.Marker(
-                              width: 80.0,
-                              height: 40.0,
-                              point: new latLng.LatLng(51.5, -0.09),
-                              builder: (context) => new Container(
-                                child:
-                                    new Icon(Icons.pin_drop, color: Colors.red),
-                              ),
+                            markers: generateMarker()
+                            // markers: [
+                            //   new flutterMap.Marker(
+                            //     width: 80.0,
+                            //     height: 40.0,
+                            //     point: new latLng.LatLng(51.5, -0.09),
+                            //     builder: (context) => new Container(
+                            //       child:
+                            //           new Icon(Icons.pin_drop, color: Colors.red),
+                            //     ),
+                            //   ),
+                            // ],
                             ),
-                            new flutterMap.Marker(
-                              width: 80.0,
-                              height: 40.0,
-                              point: new latLng.LatLng(51.5, -0.10),
-                              builder: (context) => new Container(
-                                child:
-                                    new Icon(Icons.pin_drop, color: Colors.red),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   )
